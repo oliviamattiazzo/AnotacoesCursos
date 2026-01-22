@@ -81,6 +81,92 @@ olhar mais geral, que responde à pergunta:
 * **Execução da aplicação:** tempo médio de resposta de requisições (ms), número de requisições com erro por minuto.
 * **Regras de negócio:** taxa de conversão em um e-commerce (%), número de novos usuários cadastrados por dia.
 
+## Estratégias de observabilidade
+
+### Pilares de Observabilidade
+
+**O que são?**<br>
+O que vamos observar dentro de uma aplicação.
+
+* Métricas
+  * Percentual de uso de processamento
+  * Percentual de CPU
+  * Uso de memória
+  * Leitura e escrita de dados
+* Traços distribuídos
+  * Monitorar o percurso das requisições internamente
+  * Identificar pontos de lentidão e/ou maior latência
+* Logs
+  * Status da aplicação
+  * Relatórios sobre erros e falhas
+  * Prática de debug
+
+**Como implementar?**
+
+**Métricas:** Prometheus
+
+* Captura métricas da aplicação (gerais e/ou personalizadas)
+* Open source
+* Usada em conjunto com o *Grafana*
+* Prometheus exporta as métricas, o Grafana cria os gráficos para visualização
+  * Diferentes formas de visualização facilitam o acompanhamento da aplicação
+
+**Traços distribuídos:** Jaeger
+
+* Camada de acompanhamento de requisições
+* Caminho do processamento da requisição dentro da aplicação
+* Não é necessário uma ferramenta de visualização - Jaeger já faz isso por conta própria
+* Acompanhamento permite leitura clara sobre aspectos de latência e tempo de processamento
+  * Identificação de gargalos
+
+**Logs:** Graylog
+
+* Coletando tudo o que está acontecendo na aplicação
+* Logs são salvos num arquivo, com timestamp e informação
+* Servidor de logs: recebem os arquivos de log
+* Graylog ajuda a organizar, indexar e visualizar os logs
+
+**Outras ferramentas**
+* ELK Stack (Elasticsearch - Logstash - Kibana)
+* New Relic
+* Dynatrace
+
+-> Previsão de problemas
+
+## Respondendo a falhas
+
+* Não queremos indisponibilidade na aplicação
+* Garantir funcionamento íntegro e contínuo
+
+### Chegou um problema! O que fazer?
+
+1. Identificar quais são os pontos de falha (*pontos críticos*)
+2. Reunir dados das métricas, traços distribuídos e logs
+3. Analisar os dados
+4. Configurar alertas
+  * Mitiga falhas
+  * Previne problemas antes que os usuários detectem
+  * Minimiza o impacto no funcionamento da aplicação
+
+:warning: Lembrar de também monitorar atividades suspeitas<br>
+* Múltiplas requisições (exemplo)
+* Ataques e intrusões no sistema
+* **IDS**
+  * Monitora atividades suspeitas
+* **IPS**
+  * Previne que atividades suspeitas abalem a aplicação
+
+**Importante:** documentar o que aconteceu após uma falha (seja de desempenho ou de segurança)
+* Aprendizado da equipe
+* Promover cultura colaborativa
+* Evitar repetição de :shit:
+* Oportunidade de refatoração de código
+  * Melhorar resiliência, desempenho e reduzindo vulnerabilidades
+
 ## Glossário
 
 * *Tracing:* rastreamento de requisições
+* *Traços distribuídos / Distributed tracing:* rastreamento e monitoramento das requisições do sistema e do seu percurso
+* *Logs*: registros de funcionamento
+* *IDS*: Intrusion Detection System
+* *IPS*: Intrusion Prevention System
