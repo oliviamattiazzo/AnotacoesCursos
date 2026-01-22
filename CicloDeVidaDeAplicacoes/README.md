@@ -6,7 +6,7 @@
 
 ## Índice das Aulas
 - [X] [Pós-deploy](01_pos_deploy.md)
-- [ ] Observabilidade
+- [X] [Observabilidade](02_observabilidade.md)
 - [ ] Segurança de aplicações
 - [ ] Adaptando e mantendo aplicações
 - [ ] Lidando com ambientes
