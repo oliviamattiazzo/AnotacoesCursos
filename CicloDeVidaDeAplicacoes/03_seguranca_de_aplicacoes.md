@@ -173,7 +173,7 @@
 7. Atualização e melhoria contínua do plano
   *  Novas vulnerabilidades e problemas de segurança surgem constantemente
 
-## Exercício - identificando vulnerabilidades com o OWASP Top 10
+## :pencil: Exercício - identificando vulnerabilidades com o OWASP Top 10
 
 ### Dados do cenário
 
