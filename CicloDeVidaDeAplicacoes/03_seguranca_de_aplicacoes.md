@@ -202,3 +202,29 @@
 * [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
 
 ### Resolução
+
+**Ponto 1**
+
+É um problema relacionado ao [A04 - Cryptographic Failures](https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/). Essa norma diz que todos os dados em trânsito precisam ser criptografados na camada de transporte (OSI layer 4). Além de certificar a segurança na camada de transporte, é importante que um dado sensível como esse também seja criptografado onde é guardado. Inclusive, na norma, alguns dos exemplos de dados que requerem proteção "extra" é justamente *personal information* e *credid card numbers*, que é o caso do CPF e das informações de pagamento.
+
+**Proposta de solução:**
+
+* Implementar algoritmos de criptografia de confiança no banco de dados (para garantir a criptografia em repouso)
+* Criptografar todos os dados em trânsito com protocolos TSL 1.2 no mínimo.
+* Desabilitar caching para respostas que contenham dados sensíveis.
+
+**Ponto 2**
+
+Está relacionado ao [A05 - Injection](https://owasp.org/Top10/2025/A05_2025-Injection/). Uma vulnerabilidade de "injeção" é uma falha na aplicação que permite que inputs maliciosos de usuários possam ser enviados através do browser (por exemplo) e fazer com que o interpretador execute partes desse input como comandos. O Cross-Site Scripting é um dos exemplos desse tipo de vulnerabilidade, mas existem outros como *SQL-injections*, por exemplo.
+
+**Proposta de solução:**
+
+* Usar validação server-side de inputs.
+* Fazer uma "limpeza" e normalização dos inputs antes de enviá-los para algum lugar.
+
+**Ponto 3**
+
+Está relacionado com o [A01 - Broken Access Control](https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/). É preciso reforçar uma política de controle de acesso, em que usuários não possam agir fora das suas permissões já definidas. Falhas nesse sentido geralmente levam a exposição não-autorizada de informação confidencial, modificações ou exclusões de grandes quantidades de dados ou até mesmo a execuçnao de funções fora dos limites do usuário.
+
+**Proposta de solução:**
+
