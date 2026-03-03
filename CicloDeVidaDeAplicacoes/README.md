@@ -8,5 +8,5 @@
 - [X] [Pós-deploy](01_pos_deploy.md)
 - [X] [Observabilidade](02_observabilidade.md)
 - [X] [Segurança de aplicações](03_seguranca_de_aplicacoes.md)
-- [ ] Adaptando e mantendo aplicações
+- [X] [Adaptando e mantendo aplicações](04_adaptando_mantendo_aplicacoes.md)
 - [ ] Lidando com ambientes
